@@ -64,6 +64,8 @@ public class Alphabetical {
             writer.println(e);
             writer.flush();
             writer.close();
+
+            System.out.println("File written succesfully");
         }
     }
 }
