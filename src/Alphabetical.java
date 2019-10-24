@@ -1,7 +1,5 @@
 import java.util.LinkedList;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 
 public class Alphabetical {
@@ -54,8 +52,54 @@ public class Alphabetical {
     }
 
     public static void Print_method(LinkedList<String> Dictionary){
+        System.out.println("List of words");
+        System.out.println("==============");
             for (String e : Dictionary){
                 System.out.println(e);
             }
+    }
+
+    public static void Create_Filetxt(LinkedList<String> Dictionary) throws IOException {
+        FileWriter writer = new FileWriter("Fixed/sorteddict.txt");
+        for (String e : Dictionary){
+            writer.write(e);
+            writer.write("\n");
+            writer.flush();
+        }
+    }
+
+
+    public static void Get_String (LinkedList<String>Dictionary, int index){
+
+        if(Dictionary.size()<=index){
+            System.out.println("There is no String stored in that position. Try again!");
+        }else{
+            System.out.println("The word of the position " + index + " is: " + Dictionary.get(index));
+        }
+    }
+
+    public static void Get_index (LinkedList<String> Dictionary, String line){
+        boolean flag = true;
+        for (String e : Dictionary){
+            if(e.equalsIgnoreCase(line)){
+                System.out.println("The position of the word "+e+" is: "+ Dictionary.indexOf(e));
+                flag = true;
+                break;
+            }else{
+                flag = false;
+            }
+        }
+        if(flag == false){
+                System.out.println("-1");
+        }
+    }
+
+    public static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
     }
 }
