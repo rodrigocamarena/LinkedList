@@ -149,14 +149,3 @@ public class Alphabetical {
             System.out.println(e);
         }
     }
-
-    public static void Print_to_File(LinkedList<String> Dictionary)
-            throws FileNotFoundException, UnsupportedEncodingException {
-        for (String e : Dictionary) {
-            PrintWriter writer = new PrintWriter("the-file-name.txt", "UTF-8");
-            writer.println(e);
-            writer.flush();
-            writer.close();
-        }
-    }
-}
