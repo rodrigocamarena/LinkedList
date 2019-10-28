@@ -10,7 +10,12 @@ public class Alphabetical {
         String line = reader.readLine();
         Dictionary.add(line);
         line = reader.readLine();
+        long start = System.currentTimeMillis();
+
         while (line != null) {
+
+
+
             for (int i = 0; i < Dictionary.size(); i++) {
                 if (line.compareTo(Dictionary.get(i)) < 0) {
                     Filling_method(Dictionary, i, line);
@@ -18,6 +23,9 @@ public class Alphabetical {
                     break;
                 }
             }
+
+
+
             if (flag) {
                 Dictionary.add(line);
             }
@@ -25,11 +33,16 @@ public class Alphabetical {
             flag = true;
         }
 
+        long end = System.currentTimeMillis();
+        System.out.println("Took : " + ((end - start)));
+
         Print_method(Dictionary);
     }
 
     public static void Filling_method(LinkedList<String> Dictionary, int index, String line) {
+
         String[] array = new String[Dictionary.size() + 1];
+        long start = System.currentTimeMillis();
         int num = 0;
         int x = 0;
         for (int j = 0; j < Dictionary.size() + 1; j++) {
@@ -40,6 +53,10 @@ public class Alphabetical {
                 x++;
             }
         }
+
+        long end = System.currentTimeMillis();
+        System.out.println("Took : " + ((end - start)));
+
         while (Dictionary.size() > num) {
             Dictionary.remove(num);
         }
