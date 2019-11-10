@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class Amaurytrial<i> {
 
 
@@ -6,6 +8,7 @@ public class Amaurytrial<i> {
         boolean checked = false;
 
         //while (i>input1.length() && i>input2.length() )
+
         for (int i = 0; i < input1.length() && i < input2.length(); i++) {
 
             if (input1.charAt(i) == input2.charAt(i)) {
@@ -30,4 +33,6 @@ public class Amaurytrial<i> {
             System.out.println(Amaurytrial.checkagainstword("yeehsbnakkis", "yeehbjsnjsu"));
 
     }
-}
+
+    }
+

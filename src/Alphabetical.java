@@ -41,6 +41,7 @@ public class Alphabetical {
 
     public static void Filling_method(LinkedList<String> Dictionary, int index, String line) {
 
+
         String[] array = new String[Dictionary.size() + 1];
         long start = System.currentTimeMillis();
         int num = 0;
