@@ -50,8 +50,6 @@ Option 2: Long test. Request an input word from user like in option 1 but instea
 
 
 
-
-
 Input Testing:
 
 We checked for a variety of different inputs: numbers (negative, positive and large), special characters (/ . * @) and letters with accents. 
