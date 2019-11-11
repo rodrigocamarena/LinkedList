@@ -1,6 +1,17 @@
 Testing Homework README.md
 
-Performance Testing:
+### Code description
+
+The following piece of code is made to take a txt file made of words as input and sort the file in alphabetical order. There are 4 classes to the code. 
+1. A main class which is simply made out of a main function used to initialize the variables and call the methods and run the program. 
+2. A Methods class where all the methods for the sorting and printing are.
+3. A VerificationTest class where we have a menu allowing the user to choose from two different types of test in order to ensure the program works properly.
+4. A Menu class which provides the user with a simple console menu in order to make the program more user friendly. 
+
+**The methods class is the most interesting one since it does most of the hard work!** 
+
+
+### Performance Testing:
 We knew that our program could function since it sorted a short text file quite easily. We therefore decided to begin with performance testing. There are two main methods to our Alphabetical class, the filling method and the alphabetical method.
 
 We used the following format for timming the action:
@@ -19,7 +30,7 @@ When running the program ten times, with a smaller input file of 1000 words. The
 (303, 469, 353, 392, 421, 374, 328, 327, 403, 431)
 This made an average value of 380, with the min being 303 and max being 469. 
 This version of our code is in the testing branch 
-https://github.com/therodrigocamarena/ExerciseAmaury/tree/Testing
+
 
 We figured out that this was due to the fact that with our old version of the code it had to go through the whole LinkedList in order to find the right place. As the 
 LinkedList grew in size, this took a very long time. 
@@ -39,7 +50,7 @@ https://github.com/therodrigocamarena/ExerciseAmaury/tree/Testing_final
 
 
 
-Verification Testing:
+### Verification Testing:
 
 In this testing phase, we created a VerificationTesting class which enables the user to efficiently conduct tests regarding the sorted file using a menu. 
 Option 1: Short test. Request an input word from the user, checks that word is present, then randomly takes a sample of 100 words from the file and verifies that the word is correctly ordered whilst giving an output to the user.
@@ -47,10 +58,16 @@ Option 1: Short test. Request an input word from the user, checks that word is p
 Option 2: Long test. Request an input word from user like in option 1 but instead of checking for 100 random words, it does it for the entirity of the file word by word.
 
 
+This version of our code is the one shown in the master branch. 
 
 
 
-Input Testing:
+
+
+
+### Input Testing:
 
 We checked for a variety of different inputs: numbers (negative, positive and large), special characters (/ . * @) and letters with accents. 
 Since the Linked list is composed of strings, it did not affect the sorting. Instead, what happened is that the numbers and special characters are placed before the start of the sorted file in numerical and alphabetical order (unicode value for special char)
+
+
