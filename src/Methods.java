@@ -6,19 +6,19 @@ import java.util.ListIterator;
 
 public class Methods {
 
-    public static void BufferedReader (LinkedList<String> Diccionario, HashMap<Character, Integer>Alphabet) throws IOException {
+    public static void BufferedReader (LinkedList<String> Dictionary, HashMap<Character, Integer>Alphabet) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("Fixed/unsorteddict3.txt"));
         String line = reader.readLine();
         AlphabetCounter(line, Alphabet);
-        SaveLastPosition(line, Diccionario);
+        SaveLastPosition(line, Dictionary);
         line = reader.readLine();
         AlphabetCounter(line, Alphabet);
         while(line != null){
-            if(line.compareToIgnoreCase((Diccionario.get(Diccionario.size()-1))) > 0){ //para guardar en la ultima posicion direct.
-                SaveLastPosition(line, Diccionario);
+            if(line.compareToIgnoreCase((Dictionary.get(Dictionary.size()-1))) > 0){ 
+                SaveLastPosition(line, Dictionary);
             }else{
-                int position = CheckOrder(line, Diccionario, Alphabet);
-                FillingMethod(line, position, Diccionario);
+                int position = CheckOrder(line, Dictionary, Alphabet);
+                FillingMethod(line, position, Dictionary);
             }
             line = reader.readLine();
             if(line!=null){
@@ -27,57 +27,57 @@ public class Methods {
         }
     }
 
-    public static int CheckOrder (String line, LinkedList<String> Diccionario, HashMap<Character, Integer>Alphabet){
-        int i = 0;
+    public static int CheckOrder (String line, LinkedList<String> Dictionary, HashMap<Character, Integer>Alphabet){
+        int ordervalue = 0;
         int position = AlphabetPosition(line, Alphabet);
-        ListIterator<String> itr = Diccionario.listIterator(position);
-        while(itr.hasNext()){
-            String value = itr.next();
+        ListIterator<String> iterator = Dictionary.listIterator(position);
+        while(iterator.hasNext()){
+            String value = iterator.next();
             if(line.compareToIgnoreCase(value) < 0){
-                i = Diccionario.indexOf(value);
+                ordervalue = Dictionary.indexOf(value);
                 break;
             }
         }
-        return i;
+        return ordervalue;
     }
 
-    public static void FillingMethod (String line, int position, LinkedList<String>Diccionario){
-        String palabra = Diccionario.get(position);
-        Diccionario.set(position, line);
-        ListIterator<String> itr = Diccionario.listIterator(position+1);
-        if(position +1 == Diccionario.size()){
-            SaveLastPosition(palabra, Diccionario);
+    public static void FillingMethod (String line, int position, LinkedList<String>Dictionary){
+        String word = Dictionary.get(position);
+        Dictionary.set(position, line);
+        ListIterator<String> iterator = Dictionary.listIterator(position+1);
+        if(position +1 == Dictionary.size()){
+            SaveLastPosition(word, Dictionary);
         }else{
-            while(itr.hasNext()){
+            while(iterator.hasNext()){
                 position++;
-                line = itr.next();
-                Diccionario.set(position, palabra);
-                palabra = line;
+                line = iterator.next();
+                Dictionary.set(position, word);
+                word = line;
 
-                if((position + 1) == Diccionario.size()){
-                    SaveLastPosition(palabra, Diccionario);
+                if((position + 1) == Dictionary.size()){
+                    SaveLastPosition(word, Dictionary);
                     break;
                 }
             }
         }
     }
-    public static void SaveLastPosition (String line, LinkedList<String>Diccionario){
-        Diccionario.add(line);
+    public static void SaveLastPosition (String line, LinkedList<String>Dictionary){
+        Dictionary.add(line);
     }
-    public static void PrintLinkedList (LinkedList<String>Diccionario){
-        ListIterator<String> itr = Diccionario.listIterator();
+    public static void PrintLinkedList (LinkedList<String>Dictionary){
+        ListIterator<String> iterator = Dictionary.listIterator();
         int i = 1;
-        while(itr.hasNext()){
-            System.out.println(i+"."+itr.next());
+        while(iterator.hasNext()){
+            System.out.println(i+"."+iterator.next());
             i++;
         }
     }
 
-    public static void Create_Filetxt(LinkedList<String> Diccionario) throws IOException {
+    public static void Create_Filetxt(LinkedList<String> Dictionary) throws IOException {
         FileWriter writer = new FileWriter("Fixed/sorteddict.txt");
-        ListIterator<String> itr = Diccionario.listIterator();
-        while(itr.hasNext()){
-            String line = itr.next();
+        ListIterator<String> iterator = Dictionary.listIterator();
+        while(iterator.hasNext()){
+            String line = iterator.next();
             writer.write(line);
             writer.write("\n");
             writer.flush();
@@ -85,17 +85,13 @@ public class Methods {
     }
 
     public static void InitializeAlphabet (HashMap<Character, Integer> Alphabet){
-        char c = 'a';
+        char alphabetchar = 'a';
         for(int i=0; i<26; i++){
             Alphabet.put(c, 0);
-            c++;
+            alphabetchar++;
         }
 
-        /*
-                for(Character key : Alphabet.keySet()){
-            System.out.println("Key is: "+key + "Value is: " + Alphabet.get(key));
-        }
-         */
+
     }
 
     public static void AlphabetCounter (String line, HashMap<Character, Integer> Alphabet){

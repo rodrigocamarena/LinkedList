@@ -11,7 +11,7 @@ public class Menu {
         this.position = position;
     }
 
-    public static String PrintMenu(LinkedList<String> Diccionario) {
+    public static String PrintMenu(LinkedList<String> Dictionary) {
         String token = "";
 
         System.out.println("              MENU               ");
@@ -28,7 +28,7 @@ public class Menu {
         if (sc.hasNextInt()) {
             int input = sc.nextInt();
             System.out.println("You entered : " + input);
-            IntegerInput(input, Diccionario);
+            IntegerInput(input, Dictionary);
 
         } else {
             String word = sc.nextLine();
@@ -41,28 +41,33 @@ public class Menu {
                 System.out.println();
                 System.out.println();
             } else {
-                StringInput(word, Diccionario);
+                StringInput(word, Dictionary);
             }
         }
 
         return token;
     }
 
-    public static void IntegerInput(int input, LinkedList<String> Diccionario) {
-        if (input < -1 || input > Diccionario.size() - 1) {
-            System.out.println("Introduced Position does not exist. Must be GREATER than 0 and lower than " + (Diccionario.size() - 1));
+    public static void IntegerInput(int input, LinkedList<String> Dictionary) {
+        if (input < -1 || input > Dictionary.size() - 1) {
+            System.out.println("Introduced Position does not exist. Must be GREATER than 0 and lower than " + (Dictionary.size() - 1));
         } else if (input == -1) {
             System.out.println("Initializing test...");
-            VerificationTest.TestMenu(Diccionario);
+            VerificationTest.TestMenu(Dictionary);
 
         } else {
-            String line = Diccionario.get(input - 1);
+            String line = Dictionary.get(input - 1);
             System.out.println("The word is: " + line);
         }
     }
 
-    public static void StringInput(String word, LinkedList<String> Diccionario) {
-        if (Diccionario.contains(word)) {
+    public static void StringInput(String word, LinkedList<String> Dictionary) {
+        if(Diccionario.contains(StringUtils.capitalize(word))){
+            word = StringUtils.capitalize(word);
+            System.out.println("The position of " + word + " in the txt file is: " + (Diccionario.indexOf(word) + 1));
+            System.out.println("The position of " + word + " in the Dictionary file is: " + Diccionario.indexOf(word));
+        }else if (Diccionario.contains(StringUtils.decapitalize(word))) {
+            word = StringUtils.decapitalize(word);
             System.out.println("The position of " + word + " in the txt file is: " + (Diccionario.indexOf(word) + 1));
             System.out.println("The position of " + word + " in the Dictionary file is: " + Diccionario.indexOf(word));
         } else if (word.equalsIgnoreCase("exit")) {

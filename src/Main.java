@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 	// write your code here
         boolean flag = true;
-        int counter = 1;
+        int flagcounter = 1;
         HashMap<Character, Integer> Alphabet = new HashMap();
         Methods.InitializeAlphabet(Alphabet);
         LinkedList <String> Dictionary = new LinkedList<>();
@@ -17,9 +17,9 @@ public class Main {
         Methods.PrintLinkedList(Dictionary);
         Methods.Create_Filetxt(Dictionary);
         while(flag){
-            counter++;
+            flagcounter++;
             String token = Menu.PrintMenu(Dictionary);
-            if(token.equalsIgnoreCase("Exit") || counter == 11){
+            if(token.equalsIgnoreCase("Exit") || flagcounter == 11){
                 flag = false;
             }
         }

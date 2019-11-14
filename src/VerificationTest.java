@@ -5,8 +5,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class VerificationTest {
 
-    public static void TestMenu(LinkedList<String> Diccionario) {
-        Scanner sc = new Scanner(System.in);
+    public static void TestMenu(LinkedList<String> Dictionary) {
+        Scanner scan = new Scanner(System.in);
         boolean flag = true;
         while (flag) {
             System.out.println("              TEST                 ");
@@ -16,17 +16,21 @@ public class VerificationTest {
             System.out.println("3. Type 'Exit' if you want to go back to the General Menu.");
             System.out.println("4. Type 'Help' if you want some help.");
             System.out.println("Your input: ");
-            String token = sc.nextLine();
-            sc.reset();
+            String token = scan.nextLine();
+            scan.reset();
 
             if (token.equalsIgnoreCase("short")) {
                 System.out.println("Short Test Initialized...");
                 System.out.println("Introduce your word: ");
-                String word = sc.nextLine();
-                sc.reset();
-                if (Diccionario.contains(word)) {
+                String word = scan.nextLine();
+                scan.reset();
+                if (Diccionario.contains(StringUtils.capitalize(word))) {
+                    word = StringUtils.capitalize(word);
                     ShortTest(Diccionario, word);
-                } else {
+                } else if (Diccionario.contains(StringUtils.decapitalize(word))){
+                    word = StringUtils.decapitalize(word);
+                    ShortTest(Diccionario, word);
+                }else{
                     System.out.println("The word introduced is not contained in the txt file.");
                     System.out.println("Try again!");
                 }
@@ -34,11 +38,15 @@ public class VerificationTest {
             } else if (token.equalsIgnoreCase("Long")) {
                 System.out.println("Long Test Initialized...");
                 System.out.println("Introduce your word: ");
-                String word = sc.nextLine();
-                sc.reset();
-                if (Diccionario.contains(word)) {
+                String word = scan.nextLine();
+                scan.reset();
+                if (Diccionario.contains(StringUtils.capitalize(word))) {
+                    word = StringUtils.capitalize(word);
                     LongTest(Diccionario, word);
-                } else {
+                } else if (Diccionario.contains(StringUtils.decapitalize(word))){
+                    word = StringUtils.decapitalize(word);
+                    LongTest(Diccionario, word);
+                }else{
                     System.out.println("The word introduced is not contained in the txt file.");
                     System.out.println("Try again!");
                 }
@@ -60,47 +68,47 @@ public class VerificationTest {
 
     }
 
-    public static void ShortTest(LinkedList<String> Diccionario, String word) {
+    public static void ShortTest(LinkedList<String> Dictionary, String word) {
         System.out.println();
         System.out.println();
         System.out.println("           SHORT TEST           ");
         System.out.println("================================");
         System.out.println("Generating random numbers...");
         for (int i = 0; i <= 100; i++) {
-            int random = ThreadLocalRandom.current().nextInt(0, Diccionario.size() - 1);
-            int x = word.compareToIgnoreCase(Diccionario.get(random));
-            String token = Diccionario.get(random);
+            int random = ThreadLocalRandom.current().nextInt(0, Dictionary.size() - 1);
+            int x = word.compareToIgnoreCase(Dictionary.get(random));
+            String token = Dictionary.get(random);
             if (x < 0) {
-                if (Diccionario.indexOf(word) < Diccionario.indexOf(token)) {
-                    System.out.println(i + "." + word.toUpperCase() + " goes before " + Diccionario.get(random).toUpperCase() + ": YES");
+                if (Dictionary.indexOf(word) < Dictionary.indexOf(token)) {
+                    System.out.println(i + "." + word.toUpperCase() + " goes before " + Dictionary.get(random).toUpperCase() + ": YES");
                 } else {
-                    System.out.println(i + "." + word.toUpperCase() + " goes before " + Diccionario.get(random).toUpperCase() + ": NO");
+                    System.out.println(i + "." + word.toUpperCase() + " goes before " + Dictionary.get(random).toUpperCase() + ": NO");
                     System.out.println("CLOSING TEST, WORD IS NOT CORRECTLY ORDERED.");
                     break;
                 }
             } else if (x > 0) {
-                if (Diccionario.indexOf(word) > Diccionario.indexOf(token)) {
-                    System.out.println(i + "." + word.toUpperCase() + " goes after " + Diccionario.get(random).toUpperCase() + ": YES");
+                if (Dictionary.indexOf(word) > Dictionary.indexOf(token)) {
+                    System.out.println(i + "." + word.toUpperCase() + " goes after " + Dictionary.get(random).toUpperCase() + ": YES");
                 } else {
-                    System.out.println(i + "." + word.toUpperCase() + " goes after " + Diccionario.get(random).toUpperCase() + ": NO");
+                    System.out.println(i + "." + word.toUpperCase() + " goes after " + Dictionary.get(random).toUpperCase() + ": NO");
                 }
             }
         }
     }
 
-    public static void LongTest(LinkedList<String> Diccionario, String word) {
-        int i = 1;
+    public static void LongTest(LinkedList<String> Dictionary, String word) {
+        int testruncounter = 1;
         System.out.println();
         System.out.println();
         System.out.println("           LONG TEST           ");
         System.out.println("===============================");
         System.out.println("Generating random numbers...");
-        ListIterator<String> itr = Diccionario.listIterator();
-        while (itr.hasNext()) {
-            String token = itr.next();
+        ListIterator<String> iterator = Dictionary.listIterator();
+        while (iterator.hasNext()) {
+            String token = iterator.next();
             int x = word.compareToIgnoreCase(token);
             if (x < 0) {
-                if (Diccionario.indexOf(word) < Diccionario.indexOf(token)) {
+                if (Dictionary.indexOf(word) < Dictionary.indexOf(token)) {
                     System.out.println(i + "." + word.toUpperCase() + " goes before " + token.toUpperCase() + ": YES");
                 } else {
                     System.out.println(i + "." + word.toUpperCase() + " goes before " + token.toUpperCase() + ": NO");
@@ -108,7 +116,7 @@ public class VerificationTest {
                     break;
                 }
             } else if (x > 0) {
-                if (Diccionario.indexOf(word) > Diccionario.indexOf(token)) {
+                if (Dictionary.indexOf(word) > Dictionary.indexOf(token)) {
                     System.out.println(i + "." + word.toUpperCase() + " goes after " + token.toUpperCase() + ": YES");
                 } else {
                     System.out.println(i + "." + word.toUpperCase() + " goes after " + token.toUpperCase() + ": NO");
@@ -116,7 +124,7 @@ public class VerificationTest {
                     break;
                 }
             }
-            i++;
+            testruncounter++;
         }
     }
 }
