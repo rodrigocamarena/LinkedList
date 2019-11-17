@@ -59,6 +59,8 @@ We checked for a variety of different inputs: numbers (negative, positive and la
 
 ## Refactoring
 
+**ALL THESE CHANGES CAN BE APPRECIATED AT THE [REFACTORING][REFACTOR] BRANCH.**
+
 ### Coding principles 
 
 #### Meaningfull names :
@@ -97,3 +99,4 @@ After deleting a few functions that were useless, we are now at a point where ev
 
 [TestingLink]: https://github.com/therodrigocamarena/ExerciseAmaury/tree/Testing_final
 [master]: https://github.com/therodrigocamarena/LinkedList
+[REFACTOR]: https://github.com/therodrigocamarena/LinkedList/tree/Refactor
