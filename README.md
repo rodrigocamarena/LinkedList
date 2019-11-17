@@ -1,14 +1,5 @@
-Testing Homework README.md
-
-### Code description
-
-The following piece of code is made to take a txt file made of words as input and sort the file in alphabetical order. There are 4 classes to the code. 
-1. A main class which is simply made out of a main function used to initialize the variables and call the methods and run the program. 
-2. A Methods class where all the methods for the sorting and printing are.
-3. A VerificationTest class where we have a menu allowing the user to choose from two different types of test in order to ensure the program works properly.
-4. A Menu class which provides the user with a simple console menu in order to make the program more user friendly. 
-
-**The methods class is the most interesting one since it does most of the hard work!** 
+TESTING
+=======
 
 
 ### Performance Testing:
