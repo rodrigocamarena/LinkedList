@@ -45,7 +45,8 @@ It was clear that our filling method was the bottle neck of the program and it h
 
 Once we had changed our code, we noticed that there was an improvement in speed. Our new values were: (231, 245, 214, 231, 259, 297, 332, 235, 311, 292) For an average of 265, a 30% reduction compared to the code we previously had.
 
-We further improve the code for longer input files to be more efficient by implementing a Hashmap which goes to the correct letter directly. This version of the code can be found here: https://github.com/therodrigocamarena/ExerciseAmaury/tree/Testing_final
+We further improve the code for longer input files to be more efficient by implementing a Hashmap which goes to the correct letter directly. This version of the code can be found here: [Testing]
+[Testing]: https://github.com/therodrigocamarena/ExerciseAmaury/tree/Testing_final
 
 **Verification Testing:**
 In this testing phase, we created a VerificationTesting class which enables the user to efficiently conduct tests regarding the sorted file using a menu. Option 1: Short test. Request an input word from the user, checks that word is present, then randomly takes a sample of 100 words from the file and verifies that the word is correctly ordered whilst giving an output to the user.
